@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:plant_app/constants.dart';
 
-class action extends StatelessWidget {
-  const action({
+class actions extends StatelessWidget {
+  const actions({
     Key key,
   }) : super(key: key);
 
@@ -11,6 +11,19 @@ class action extends StatelessWidget {
     return Form(
       child: Column(
         children: [
+               TextFormField(
+            keyboardType: TextInputType.text,
+            textInputAction: TextInputAction.next,
+            cursorColor: kPrimaryColor,
+            onSaved: (visa) {},
+            decoration: InputDecoration(
+              hintText: "Visa card",
+              prefixIcon: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Icon(Icons.credit_card),
+              ),
+            ),
+          ),
           TextFormField(
             keyboardType: TextInputType.emailAddress,
             textInputAction: TextInputAction.next,

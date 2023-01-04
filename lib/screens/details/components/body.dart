@@ -4,7 +4,7 @@ import 'package:plant_app/screens/details/actions_screens.dart';
 
 import 'image_and_icons.dart';
 import 'title_and_price.dart';
-import 'package:plant_app/screens/details/actions_screens.dart';
+
 
 class Body extends StatelessWidget {
   @override
