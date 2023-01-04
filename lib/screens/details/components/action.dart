@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:plant_app/constants.dart';
 
-
-
 class action extends StatelessWidget {
   const action({
     Key key,
@@ -52,7 +50,7 @@ class action extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 16.0),
-        
+      
         ],
       ),
     );
