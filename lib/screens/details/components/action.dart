@@ -8,55 +8,64 @@ class actions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    TextEditingController visa = TextEditingController();
+    TextEditingController email = TextEditingController();
+    TextEditingController pass = TextEditingController();
     return Form(
       child: Column(
         children: [
           Padding(padding: const EdgeInsets.symmetric(vertical: 26.0)),
                TextFormField(
+                controller: visa,
             keyboardType: TextInputType.text,
             textInputAction: TextInputAction.next,
             cursorColor: kPrimaryColor,
             cursorRadius: Radius.circular(6.0),
-             onSaved: (visa) {},
+             
             decoration: InputDecoration(
-             border: OutlineInputBorder(),
+             border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
+             labelText: "Visa",
               hintText: "Visa card",
               prefixIcon: Padding(
                 padding: const EdgeInsets.all(defaultPadding ),
-                child: Icon(Icons.credit_card),
+                child: Icon(Icons.credit_card,color: Colors.blue,),
               ),
              
           ),),
            Padding(padding: const EdgeInsets.symmetric(vertical: 7.0)),
           TextFormField(
+            controller: email,
             keyboardType: TextInputType.emailAddress,
             textInputAction: TextInputAction.next,
             cursorColor: kPrimaryColor,
-            cursorRadius: Radius.circular(10.0),
-            onSaved: (email) {},
+            
             decoration: InputDecoration(
               
-              border: OutlineInputBorder(),
+              border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
+              labelText: "email",
               hintText: "Your email",
               prefixIcon: Padding(
                 padding: const EdgeInsets.all(defaultPadding ),
-                child: Icon(Icons.person),
+                child: Icon(Icons.person,color: Colors.blue,),
               ),
             ),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: defaultPadding ),
             child: TextFormField(
+              controller: pass,
               textInputAction: TextInputAction.done,
               obscureText: true,
               cursorColor: kPrimaryColor,
               cursorRadius: Radius.circular(6.0),
               decoration: InputDecoration(
-                border: OutlineInputBorder(),
+                border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
+                labelText: "password",
                 hintText: "Your password",
                 prefixIcon: Padding(
                   padding: const EdgeInsets.all(defaultPadding ),
-                  child: Icon(Icons.lock),
+                  child: Icon(Icons.lock,color: Colors.blue,),
+                  
                 ),
               ),
             ),
@@ -65,9 +74,15 @@ class actions extends StatelessWidget {
           Hero(
             tag: "login_btn",
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                if (visa.text.trim().isNotEmpty&&
+                 pass.text.trim().isNotEmpty&&
+                 email.text.trim().isNotEmpty){
+                print("Buying succeded");
+                }
+              },
               child: Text(
-                "Login".toUpperCase(),
+                "OK".toUpperCase(),
               ),
             ),
           ),
