@@ -1,3 +1,8 @@
+
+
+
+
+
 import 'package:flutter/material.dart';
 import 'package:plant_app/screens/details/details_screen.dart';
 
@@ -119,7 +124,7 @@ class RecomendPlantCard extends StatelessWidget {
                   ),
                   Spacer(),
                   Text(
-                    '\$$price',
+                    '$price LYD',
                     style: Theme.of(context)
                         .textTheme
                         .button

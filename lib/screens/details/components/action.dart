@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:plant_app/constants.dart';
 
+
 class actions extends StatelessWidget {
   const actions({
     Key key,
@@ -11,11 +12,15 @@ class actions extends StatelessWidget {
     TextEditingController visa = TextEditingController();
     TextEditingController email = TextEditingController();
     TextEditingController pass = TextEditingController();
+    String uemail="ali";
+    String upass="12345678";
+    String uvisa="123";
     return Form(
       child: Column(
         children: [
           Padding(padding: const EdgeInsets.symmetric(vertical: 26.0)),
-               TextFormField(
+               Container(
+               child: TextFormField(
                 controller: visa,
             keyboardType: TextInputType.text,
             textInputAction: TextInputAction.next,
@@ -31,9 +36,10 @@ class actions extends StatelessWidget {
                 child: Icon(Icons.credit_card,color: Colors.blue,),
               ),
              
-          ),),
+          )),),
            Padding(padding: const EdgeInsets.symmetric(vertical: 7.0)),
-          TextFormField(
+           Container(
+           child: TextFormField(
             controller: email,
             keyboardType: TextInputType.emailAddress,
             textInputAction: TextInputAction.next,
@@ -49,46 +55,67 @@ class actions extends StatelessWidget {
                 child: Icon(Icons.person,color: Colors.blue,),
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: defaultPadding ),
-            child: TextFormField(
-              controller: pass,
-              textInputAction: TextInputAction.done,
-              obscureText: true,
-              cursorColor: kPrimaryColor,
-              cursorRadius: Radius.circular(6.0),
-              decoration: InputDecoration(
-                border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
-                labelText: "password",
-                hintText: "Your password",
-                prefixIcon: Padding(
-                  padding: const EdgeInsets.all(defaultPadding ),
-                  child: Icon(Icons.lock,color: Colors.blue,),
-                  
-                ),
+          ),),
+          
+            Padding(padding: const EdgeInsets.symmetric(vertical: 7.0)), 
+             Container(
+           child: TextFormField(
+            controller: pass,
+           obscureText: true,
+            textInputAction: TextInputAction.next,
+            cursorColor: kPrimaryColor,
+            decoration: InputDecoration(
+              border: OutlineInputBorder(borderRadius: BorderRadius.circular(20)),
+              labelText: "password",
+              hintText: "Your password",
+              prefixIcon: Padding(
+                padding: const EdgeInsets.all(defaultPadding ),
+                child: Icon(Icons.person,color: Colors.blue,),
               ),
             ),
-          ),
-          const SizedBox(height: defaultPadding ),
-          Hero(
-            tag: "login_btn",
-            child: ElevatedButton(
+          ),),
+        TextButton(
               onPressed: () {
-                if (visa.text.trim().isNotEmpty&&
-                 pass.text.trim().isNotEmpty&&
-                 email.text.trim().isNotEmpty){
-                print("Buying succeded");
-                }
+                //forgot password screen
               },
-              child: Text(
-                "OK".toUpperCase(),
-              ),
+              child: const Text('Forgot Password',),
             ),
-          ),
-          const SizedBox(height: defaultPadding ),
+             ElevatedButton(
+                  child: Text("OK"),
+                  onPressed: () {
+                    if (uemail == email.text &&
+                        upass == pass.text&&uvisa==visa.text) {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const SecondRoute()));
+                    } 
+                  },
+                ),
+        ]
       
-        ],
+      ));
+  }
+}
+
+ class SecondRoute extends StatelessWidget {
+   const SecondRoute({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Second Route'),
+      ),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: const Text('Go back!'),
+        ),
       ),
     );
   }
