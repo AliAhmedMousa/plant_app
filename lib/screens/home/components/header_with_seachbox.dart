@@ -11,6 +11,10 @@ class HeaderWithSearchBox extends StatelessWidget {
 
   final Size size;
 
+  static const List<String> listItems = <String> [
+    'Nahh',
+    'Yeah',
+  ];
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -36,7 +40,7 @@ class HeaderWithSearchBox extends StatelessWidget {
             child: Row(
               children: <Widget>[
                 Text(
-                  'Hi Uishopy!',
+                  'Hi Customer!',
                   style: Theme.of(context).textTheme.headline5.copyWith(
                       color: Colors.white, fontWeight: FontWeight.bold),
                 ),
@@ -67,23 +71,13 @@ class HeaderWithSearchBox extends StatelessWidget {
               ),
               child: Row(
                 children: <Widget>[
-                  Expanded(
-                    child: TextField(
-                      onChanged: (value) {},
-                      decoration: InputDecoration(
-                        hintText: "Search",
-                        hintStyle: TextStyle(
-                          color: kPrimaryColor.withOpacity(0.5),
-                        ),
-                        enabledBorder: InputBorder.none,
-                        focusedBorder: InputBorder.none,
-                        // surffix isn't working properly  with SVG
-                        // thats why we use row
-                        // suffixIcon: SvgPicture.asset("assets/icons/search.svg"),
-                      ),
+                       Autocomplete<String>(
+                      optionsBuilder: (TextEditingValue textEditingValue) {
+                        if(textEditingValue.text == '') {
+                          return const Iterable<String>.empty();
+                        }
+                      },
                     ),
-                  ),
-                  SvgPicture.asset("assets/icons/search.svg"),
                 ],
               ),
             ),
