@@ -11,7 +11,7 @@ import 'header_with_seachbox.dart';
 import 'recomend_plants.dart';
 import 'title_with_more_bbtn.dart';
 
-class Body extends StatelessWidget {
+class Bodyh extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // It will provide us total height  and width of our screen
