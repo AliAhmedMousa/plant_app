@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:plant_app/constants.dart';
-import 'package:plant_app/screens/details/actions_screens.dart';
+
 
 import 'image_and_icons.dart';
 import 'title_and_price.dart';
@@ -38,15 +38,7 @@ class Body extends StatelessWidget {
               
                     ),
                     
-                        onPressed: () {
-
-
-                Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => ActionsScreen()
-              ));
-                        },
+                        onPressed: (){},// => buy(context) ,
                         
                         
                   child: Text(
@@ -61,7 +53,9 @@ class Body extends StatelessWidget {
               ),
               Expanded(
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                   Navigator.pop(context);  
+                  },
                   child: Text("Description"),
                 ),
               ),
@@ -72,3 +66,22 @@ class Body extends StatelessWidget {
     );
   }
 }
+
+  void buy(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text("sent delivered handed"),
+            content: Text("Leave your number and wait for us to call you"),
+            actions: <Widget>[
+              TextButton(
+                child: const Text('OK'),
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          );
+        });
+  }
