@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:plant_app/constants.dart';
+import 'package:plant_app/screens/home/components/body.dart';
 
 
 import 'image_and_icons.dart';
@@ -39,12 +40,8 @@ class Bodyd extends StatelessWidget {
               
                     ),
                     
-                        onPressed: (){Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => ActionsScreen(),
-                ),
-              );},
+                        onPressed: (){ Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) =>
+   ActionsScreen()), (Route<dynamic> route) => false);},
                         
                         
                   child: Text(
@@ -60,13 +57,13 @@ class Bodyd extends StatelessWidget {
               Expanded(
                 child: TextButton(
                   onPressed: () {
-                   Navigator.pop(context); 
-                   Navigator.push(
+                  Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => ActionsScreen(),
+                  builder: (context) => Bodyh(),
                 ),
               );
+             
                     
                   },
                   child: Text("Description"),
